@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+    <title>Dream Horizon</title>
+</head>
+<body>
+    <header>
+        <h1>Dream Horizon</h1>
+    </header>
+
+    <main class = "column">
+        <div id="pdf-container">
+            <!-- PDF viewer will be centered here -->
+        </div>
+        <div id="navigation">
+            <button onclick="prevPage()">Previous Page</button>
+            <button onclick="nextPage()">Next Page</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // PDF.js script
+        const url = 'articles/ShareDream No.1.pdf';
+
+        const pdfContainer = document.getElementById('pdf-container');
+        let currentPage = 1;
+
+        function renderPage(pageNumber) {
+            pdfjsLib.getDocument(url).promise.then(pdfDoc => {
+                pdfDoc.getPage(pageNumber).then(page => {
+                    const scale = 0.8; // Change this value to adjust the scale (smaller value = smaller PDF)
+                    const viewport = page.getViewport({ scale });
+
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    pdfContainer.innerHTML = ''; // Clear previous pages
+                    pdfContainer.appendChild(canvas);
+
+                    page.render({
+                        canvasContext: context,
+                        viewport: viewport
+                    });
+                });
+            }).catch(error => {
+                console.error('Error loading PDF:', error);
+            });
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderPage(currentPage);
+            }
+        }
+
+        function nextPage() {
+            pdfjsLib.getDocument(url).promise.then(pdfDoc => {
+                if (currentPage < pdfDoc.numPages) {
+                    currentPage++;
+                    renderPage(currentPage);
+                }
+            });
+        }
+
+        // Initial render
+        renderPage(currentPage);
+
+    </script>
+</body>
+</html>

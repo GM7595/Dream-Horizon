@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: url('images/background.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: black;
+  min-height: 100vh;
+  min-width: 100vh;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 40px);
+  background: transparent; /* Set background to transparent or a solid color */
+  position: relative; /* Add position: relative */
+  z-index: 1; /* Set z-index to ensure it's above the background */
+}
+
+
+header {
+  text-align: center;
+  padding: 20px;
+  color: #fff;
+}
+
+nav {
+  padding:5px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+nav a:hover {
+  border-bottom: 2px solid white;
+}
+
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 40px);
+}
+
+.login {
+  padding:10px;
+  text-align:center;
+}
+
+.windows {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  padding-bottom:50px;
+}
+
+div.job {
+  margin-bottom:50px;
+  float: left;
+  --window-size: 400px;
+  width: var(--window-size);
+  height: var(--window-size);
+  position: relative;
+
+}
+
+div.job:hover {
+  transform: scale(1.5);
+  z-index: 2;
+}
+
+p {
+  margin: 0;
+}
+
+p.job {
+  position: absolute;
+  background-color: white;
+  margin: 2px;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: black;
+}
+
+.frame {
+  width: 100%;
+  position: relative;
+}
+
+.underlay {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 53%;
+  z-index: -1;
+  object-fit: cover;
+  width: 43%;
+  height: 50%;
+  border-radius: 40% 40% 0 0;
+}
+
+footer {
+  padding: 10px;
+  width:100%;
+  background-color: burlywood;
+  text-align: center;
+}
+
+main.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 40px);
+}
+
+#pdf-container {
+  margin-bottom: 20px;
+}
+
+#navigation {
+  width: 70%;
+  text-align: center; /* Center the buttons */
+}
+
+button {
+  margin: 0 10px; /* Add some spacing between buttons */
+  margin-bottom:20px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}

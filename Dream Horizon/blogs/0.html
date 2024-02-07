@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Example</title>
+  <style>
+    /* Paste the CSS code here */
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to My Website</h1>
+
+  <button onclick="showAlert()">Click me</button>
+  <button onclick="changeText()">Change Text</button>
+
+  <p id="demo">This is a paragraph.</p>
+
+  <script>
+    function showAlert() {
+      alert('Button clicked!');
+    }
+
+    function changeText() {
+      document.getElementById('demo').innerHTML = 'Text changed!';
+    }
+  </script>
+
+</body>
+</html>
