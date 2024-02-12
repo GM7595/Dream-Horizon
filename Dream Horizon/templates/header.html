@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <title>Dream Horizon</title>
+</head>
+<header>
+        <h1>Dream Horizon</h1>
+</header>
+
+    <!-- Navbar -->
+<nav>
+    <ul>
+        <li><a href="{{ url_for('home') }}">ホーム (Home)</a></li>
+        <li><a href="{{ url_for('about') }}">団体について (About)</a></li>
+        <li><a href="{{ url_for('home') }}">アンケート (Form)</a></li>
+        <li><a href="{{ url_for('contact') }}">連絡先 (Contact)</a></li>
+    </ul>
+</nav>
+<!-- LOGO -->
+<div>
+    <img src="{{ url_for('static', filename='images/logo.JPG') }}" id="fade_logo">
+</div>
+
+
+<!-- CHARACTER -->
+<div>
+    <img src="{{ url_for('static', filename='images/character.png') }}" id="star_chan">
+</div>
