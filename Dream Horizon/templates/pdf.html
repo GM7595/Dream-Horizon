@@ -77,7 +77,7 @@
     }
 
     // Fetch the PDF document
-    const url = 'articles/0.pdf';
+    const url = '../static/articles/0.pdf';
     pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
         pdfDoc = pdfDoc_;
         renderPage(pageNum);
