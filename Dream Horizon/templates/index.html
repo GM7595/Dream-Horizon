@@ -7,7 +7,7 @@
       <div class="windows">
           {% for x in jobs %}
         <div class="job">
-          <a href = "jobs/{{ x['loc'] }}">
+          <a href = "mid/{{ x['loc'] }}">
           <img class = "frame " src="{{ url_for('static', filename='images/window.png') }}">
          <!--<img class ="underlay" src="images/sample.gif">-->
           <p class="job">{{x["name"]}}</p>

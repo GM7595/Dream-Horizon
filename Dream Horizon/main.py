@@ -10,7 +10,7 @@ job_list = [
         "name": "個人投資家",
         "e_name": "Individual Investor",
         "filename": "",
-        "pdf_name": "",
+        "pdf_name": "articles/0.pdf",
     },
     {
         "name": "サッカー選手",
@@ -80,9 +80,13 @@ def home():
     return render_template("index.html", jobs=job_list)
 
 
-@app.route("/jobs/<job_loc>")
+@app.route("/mid/<job_loc>")
 def jobs(job_loc):
-    return render_template("0.html", jobs=job_list[int(job_loc)])
+    return render_template("job.html", jobs=job_list[int(job_loc)])
+
+@app.route("/pdf/<job_loc>")
+def pdf(job_loc):
+    return render_template("pdf.html")
 
 
 @app.route("/login", methods=['GET', 'POST'])

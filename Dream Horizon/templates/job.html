@@ -1,0 +1,27 @@
+{% include "header.html"%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clickable Image Website</title>
+  <style>
+    #container {
+      text-align: center;
+      padding-top: 50px;
+    }
+    #clickable-image {
+      width: 200px; /* Adjust the width as needed */
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <a href="/pdf/0">
+    <img id="clickable-image" src="../static/images/sparkle.jpeg" alt="Clickable Image"> <!-- Change 'image.jpg' to your image file -->
+  </a>
+</div>
+
+</body>
+</html>

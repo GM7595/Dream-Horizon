@@ -1,0 +1,90 @@
+<html lang="en">
+<body>
+
+{% include "header.html" %}
+
+<main class="column">
+    <div id="pdf-container">
+        <!-- PDF viewer will be centered here -->
+    </div>
+    <div id="navigation">
+        <button onclick="prevPage()">Previous Page</button>
+        <button onclick="nextPage()">Next Page</button>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+<script>
+    let pdfDoc = null,
+        pageNum = 1,
+        pageRendering = false,
+        pageNumPending = null,
+        scale = 1.5,
+        canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+
+    function renderPage(num) {
+        pageRendering = true;
+        pdfDoc.getPage(num).then(function(page) {
+            let viewport = page.getViewport({ scale: scale });
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            let renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+            };
+            let renderTask = page.render(renderContext);
+
+            renderTask.promise.then(function() {
+                pageRendering = false;
+                if (pageNumPending !== null) {
+                    renderPage(pageNumPending);
+                    pageNumPending = null;
+                }
+            });
+        });
+
+        document.getElementById('pdf-container').appendChild(canvas);
+    }
+
+    function queueRenderPage(num) {
+        if (pageRendering) {
+            pageNumPending = num;
+        } else {
+            renderPage(num);
+        }
+    }
+
+    function nextPage() {
+        if (pageNum >= pdfDoc.numPages) {
+            return;
+        }
+        pageNum++;
+        queueRenderPage(pageNum);
+    }
+
+    function prevPage() {
+        if (pageNum <= 1) {
+            return;
+        }
+        pageNum--;
+        queueRenderPage(pageNum);
+    }
+
+    // Fetch the PDF document
+    const url = 'articles/0.pdf';
+    pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+        pdfDoc = pdfDoc_;
+        renderPage(pageNum);
+    }).catch(function(error) {
+        console.log('Error occurred while loading the PDF:', error);
+    });
+</script>
+
+</body>
+</html>
