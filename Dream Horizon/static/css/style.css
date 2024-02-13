@@ -96,9 +96,12 @@ div.job:hover {
 #fade_logo {
     z-index: 1000;
     position: fixed;
-    top: auto;
-    left: auto;
-    animation: fade 2s ease 0s 1 normal forwards;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 0);
+    height: 100%;
+    width:100%;
+    animation: fade 4s ease 0s 1 normal forwards;
 }
 
 @keyframes fade {
