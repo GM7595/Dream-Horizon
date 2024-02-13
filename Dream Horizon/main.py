@@ -9,43 +9,51 @@ job_list = [
     {
         "name": "個人投資家",
         "e_name": "Individual Investor",
-        "img_path": "",
+        "filename": "",
+        "pdf_name": "",
     },
     {
         "name": "サッカー選手",
         "e_name": "Football Player",
-        "img_path": "",
+        "filename": "",
+        "pdf_name": "",
     },
     {
         "name": "獣医師",
         "e_name": "Veterinary Physician",
-        "img_path": "",
+        "filename": "",
+        "pdf_name": "",
 
     },
     {
         "name": "理論物理学者",
         "e_name": "Physicist",
-        "img_path": "",
+        "filename": "",
+        "pdf_name": "",
     },
     {
         "name": "宇宙飛行士",
         "e_name": "Astronaut",
-        "img_path": "",
+        "filename": "",
+        "pdf_name": "",
     },
     {
         "name": "パイロット",
         "e_name": "Pilot",
-        "img_path": "",
+        "filename": "",
+        "pdf_name": "",
     },
     {
         "name": "映画監督",
         "e_name": "Movie Director",
-        "img_path": "",
+        "filename": "",
+        "pdf_name": "",
     },
     {
         "name": "建築家",
         "e_name": "Architect",
-        "img_path": "",
+        "filename": "",
+        "pdf_name": "",
     },
 ]
 for loc, x in enumerate(job_list):
@@ -74,12 +82,22 @@ def home():
 
 @app.route("/jobs/<job_loc>")
 def jobs(job_loc):
-    return render_template("jobs.html", jobs=job_list[int(job_loc)])
+    return render_template("0.html", jobs=job_list[int(job_loc)])
 
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     return render_template("login.html")
+
+
+@app.route("/about", methods=['GET', 'POST'])
+def about():
+    return render_template("about.html")
+
+
+@app.route("/contact")
+def contact():
+    return render_template("contacts.html")
 
 
 if __name__ == "__main__":
